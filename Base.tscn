@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://de2pyfjrefj4g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_knuff"]
+sky_top_color = Color(0.0788365, 3.17663e-05, 0.30071, 1)
+sky_horizon_color = Color(0.21511, 0.000164415, 0.666773, 1)
+
+[sub_resource type="Sky" id="Sky_hrjw0"]
+sky_material = SubResource("ProceduralSkyMaterial_knuff")
+
+[sub_resource type="Environment" id="Environment_eg6lc"]
+background_mode = 2
+background_color = Color(0.109224, 0.102543, 0.41434, 1)
+sky = SubResource("Sky_hrjw0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bxamo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0m1ce"]
+margin = 0.0
+size = Vector3(2, 0.1, 2)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91068e-15, 0, 3, 0)
+light_energy = 1.5
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 5.0
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.01)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eg6lc")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_bxamo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_0m1ce")
