@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://y1muklbvy35j"]
+
+[ext_resource type="ArrayMesh" uid="uid://c0njmoxwf0ysg" path="res://assets/models/characterlowpoly2.obj" id="1_vkwxt"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_otmt6"]
+
+[sub_resource type="Animation" id="Animation_tnfu4"]
+resource_name = "placeholder"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdgej"]
+_data = {
+"placeholder": SubResource("Animation_tnfu4")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xpat"]
+
+[node name="Fighter" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.665, 0)
+mesh = ExtResource("1_vkwxt")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="Skeleton3D"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_otmt6")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wdgej")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 1.65, 0)
+shape = SubResource("CapsuleShape3D_6xpat")
+
+[node name="SFX" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Health" type="Node" parent="."]
+
+[node name="FighterController" type="Node" parent="."]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bon5w87yl5c7d"]
+
+[ext_resource type="Script" path="res://scripts/globals.gd" id="1_j2b2f"]
+[ext_resource type="Script" path="res://scripts/game_globals.gd" id="2_q3a7e"]
+
+[node name="Globals" type="Node"]
+script = ExtResource("1_j2b2f")
+
+[node name="GameGlobals" type="Node" parent="."]
+script = ExtResource("2_q3a7e")
+
+[node name="AudioLayerManager" type="Node" parent="."]
+
+[node name="FadeCanvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FadeCanvas"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

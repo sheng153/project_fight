@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmettdb0f3sa6"]
+
+[ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_am12s"]
+[ext_resource type="PackedScene" uid="uid://de2pyfjrefj4g" path="res://scenes/arenas/Arena1.tscn" id="2_2f0jp"]
+[ext_resource type="PackedScene" uid="uid://y1muklbvy35j" path="res://scenes/characters/Fighter.tscn" id="3_mxrob"]
+
+[node name="CombatScene" type="Node3D"]
+script = ExtResource("1_am12s")
+
+[node name="Arena" type="Node3D" parent="."]
+
+[node name="Arena1" parent="Arena" instance=ExtResource("2_2f0jp")]
+
+[node name="Fighters" type="Node3D" parent="."]
+
+[node name="PFighter" parent="Fighters" instance=ExtResource("3_mxrob")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+
+[node name="EFighter" parent="Fighters" instance=ExtResource("3_mxrob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Camera3D" type="Camera3D" parent="."]

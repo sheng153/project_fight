@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="Project Fight"
-run/main_scene="res://Base.tscn"
+run/main_scene="res://scenes/main_scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://scenes/main_scenes/Globals.tscn"
+
+[display]
+
+window/size/initial_position_type=3
+window/size/borderless=true
 
 [dotnet]
 
